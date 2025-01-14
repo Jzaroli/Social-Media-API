@@ -14,6 +14,7 @@ const thoughtSchema = new Schema<IThought>(
         thoughtText: {
             type: String,
             required: true,
+            maxLength: 280,
         },
         createdAt: {
             type: Date,
