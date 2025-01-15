@@ -1,5 +1,16 @@
 # social-media-API
 ## Description
+This simple back end demonstrates NoSQL CRUD operations for a make shift social media platform where you can CRUD Users and Thoughts, and you can Create and Delete Thoughts for Users and Reactions to Thoughts. 
+
+Pathways include:
+- /api/users
+- /api/users/:userId
+- /api/users/:userId/friends/:friendId
+- /api/thoughts
+- /api/thoughts/:thoughtId
+- /api/thoughts/:thoughtId/reactions
+- /api/thoughts/:thoughtId/reactions/:reactionId
+Check the /src/routes/api folder for more details on the available operations
 
 ## Usage
 
