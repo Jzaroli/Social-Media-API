@@ -1,10 +1,10 @@
-import { Schema, Document, model, ObjectId } from 'mongoose';
+import { Schema, Document, model } from 'mongoose';
 
 interface IUser extends Document {
     username: string;
     email: string;
-    thoughts?: ObjectId[];
-    friends?: ObjectId[];
+    thoughts?: [];
+    friends?: [];
    }
 
 // Schema to create User model
@@ -27,19 +27,8 @@ const userSchema = new Schema<IUser>(
                 message: 'Invalid email address format',
               },
         },
-        thoughts: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'thought',
-            },
-        ],
-        // use the list of friends populated per user for this
-        friends: [
-            {
-                type: Schema.Types.ObjectId,
-                ref: 'friend',
-            },
-        ],
+        thoughts: [],
+        friends: [],
     },
     {
         // Mongoose supports two Schema options to transform Objects after querying MongoDb: toJSON and toObject.

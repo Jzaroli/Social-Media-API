@@ -1,7 +1,8 @@
 import User from '../models/User.js';
+
 import { Request, Response } from 'express';
 
-// Finds al users
+// Finds all users
 export const getUsers = async(_req: Request, res: Response) => {
     try {
         const users = await User.find();
@@ -71,3 +72,47 @@ export const deleteUser = async (req: Request, res: Response) => {
       res.status(500).json(err);
     }
 }
+
+ // Add a friend 
+ export const addFriend = async (req: Request, res: Response) => {
+    try {
+        const friend = await User.findOne({ _id: req.params.friendId })
+        .select('-__v');
+
+        const user = await User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $addToSet: { friends: friend }},
+            { runValidators: true, new: true }
+        );
+
+    if (!user) {
+        res.status(404).json({ message: 'No user with this id!' });
+    }
+
+        res.json(user);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+  }
+
+ // Delete a friend 
+ export const removeFriend = async (req: Request, res: Response) => {
+    try {
+        const friend = await User.findOne({ _id: req.params.friendId })
+        .select('-__v');
+
+        const user = await User.findOneAndUpdate(
+            { _id: req.params.userId },
+            { $pull: { friends: friend} },
+            { runValidators: true, new: true }
+        );
+
+    if (!user) {
+        res.status(404).json({ message: 'No user with this id!' });
+    }
+
+        res.json(user);
+    } catch (err) {
+        res.status(500).json(err);
+    }
+  }
