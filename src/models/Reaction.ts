@@ -7,6 +7,7 @@ interface IReaction extends Document {
     createdAt: Date;
 }
 
+// Schema to create Reaction model
 const reactionSchema = new Schema<IReaction>(
     {
         reactionId: {
