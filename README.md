@@ -14,6 +14,8 @@ Check the /src/routes/api folder for more details on the available operations
 
 ## Usage
 
+You may watch a demo video of the app [here](https://drive.google.com/file/d/1AqwIJ5E81uvr3wj6NtMLsVDvQUYKs41J/view?usp=drive_link)
+
 Screenshot 1:  
 ![screenshot1](./src/assets/images/screenshot1.png)  
 
